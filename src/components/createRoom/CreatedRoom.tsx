@@ -8,7 +8,7 @@ interface ReactProp {
 }
 
 const CreateRoomForm = ({ isActive, onClose }:ReactProp) => {
-  const { socket }:any = useContext(SocketContext);
+  const socket :any = useContext(SocketContext);
   const [roomName, setRoomName] = useState("");
   const [error, setError] = useState<boolean>()
 
