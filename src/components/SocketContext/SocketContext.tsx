@@ -1,8 +1,7 @@
 import { createContext } from "react";
 import { io, Socket } from "socket.io-client";
 
-const socket: Socket = io(import.meta.env.VITE_CONNECTION);
-
+const socket: Socket = io(`${import.meta.env.VITE_CONNECTION}`);
 const SocketContext = createContext();
 
 const SocketProvider = ({ children }) => {
