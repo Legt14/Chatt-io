@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-//learn more typescript
-
+// learn more typescript
 
 import React, { useContext, useState, useEffect } from "react";
 import { SocketContext } from "../SocketContext/SocketContext";
@@ -12,7 +11,7 @@ interface ReactProp {
 const Chat = ({ roomName }: ReactProp) => {
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<object[]>([]);
-  const { socket }:any = useContext(SocketContext);
+  const socket : any = useContext(SocketContext);
 
   const validation = (data: string) => {
     return data.trim() == "";
@@ -39,7 +38,7 @@ const Chat = ({ roomName }: ReactProp) => {
   };
 
   const receiveMessage = (msg: string) => {
-    setMessages((state:any) => [...state, msg]);
+    setMessages((state: any) => [...state, msg]);
   };
 
   useEffect(() => {
@@ -52,7 +51,9 @@ const Chat = ({ roomName }: ReactProp) => {
   const handleScroll = () => {
     const scrollContainer: HTMLElement | null =
       document.getElementById("chatContainer");
-      scrollContainer ? scrollContainer.scrollTop = scrollContainer?.scrollHeight : scrollContainer
+    scrollContainer
+      ? (scrollContainer.scrollTop = scrollContainer?.scrollHeight)
+      : scrollContainer;
   };
 
   return (
@@ -65,7 +66,7 @@ const Chat = ({ roomName }: ReactProp) => {
           className="h-full p-4 text-base w-full break-all overflow-y-scroll"
           id="chatContainer"
         >
-          {messages?.map((msg:any, i) => (
+          {messages?.map((msg: any, i) => (
             <section key={i} className={`flex flex-col w-full`}>
               <section
                 className={`flex flex-col p-2 m-2 text-sm max-w-[30rem] ${
@@ -84,15 +85,6 @@ const Chat = ({ roomName }: ReactProp) => {
                 <p>{msg.data}</p>
               </section>
 
-              {/* <p
-                className={` p-2 m-2 ${
-                  msg.from === "Me"
-                    ? "bg-Elm ml-auto rounded-t-2xl rounded-bl-2xl"
-                    : "bg-Tarawera mr-auto rounded-t-2xl rounded-br-2xl"
-                }`}
-              >
-                {msg.from === "Me" ? `${msg.data}` : `${msg.from}:${msg.data}`}
-              </p> */}
             </section>
           ))}
         </section>
