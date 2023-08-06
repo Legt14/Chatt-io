@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState, useContext } from "react";
 import { SocketContext } from "../SocketContext/SocketContext";
 import CreateRoomForm from "../createRoom/CreatedRoom";
 
-const RoomList = ({ room }) => {
+const RoomList = ({ room }:any) => {
   const [rooms, setRooms] = useState<string[]>([]);
-  const { socket } = useContext(SocketContext);
+  const { socket}:any = useContext(SocketContext);
   const [currentRoom, setCurrentRoom] = useState<string | null>("");
 
   const [isPopupOpen, setPopupOpen] = useState(false);

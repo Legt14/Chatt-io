@@ -1,6 +1,9 @@
-import React, { useContext, useState, useEffect, SyntheticEvent } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+//learn more typescript
+
+
+import React, { useContext, useState, useEffect } from "react";
 import { SocketContext } from "../SocketContext/SocketContext";
-import { Socket } from "socket.io-client";
 
 interface ReactProp {
   roomName: string;
@@ -9,8 +12,8 @@ interface ReactProp {
 const Chat = ({ roomName }: ReactProp) => {
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<object[]>([]);
-  const { socket }: Socket = useContext(SocketContext);
-  
+  const { socket }:any = useContext(SocketContext);
+
   const validation = (data: string) => {
     return data.trim() == "";
   };
@@ -36,7 +39,7 @@ const Chat = ({ roomName }: ReactProp) => {
   };
 
   const receiveMessage = (msg: string) => {
-    setMessages((state) => [...state, msg]);
+    setMessages((state:any) => [...state, msg]);
   };
 
   useEffect(() => {
@@ -49,22 +52,20 @@ const Chat = ({ roomName }: ReactProp) => {
   const handleScroll = () => {
     const scrollContainer: HTMLElement | null =
       document.getElementById("chatContainer");
-    scrollContainer.scrollTop = scrollContainer.scrollHeight;
+      scrollContainer ? scrollContainer.scrollTop = scrollContainer?.scrollHeight : scrollContainer
   };
 
   return (
     <>
       <main className="flex flex-col items-end justify-between h-screen w-full">
         <section className="flex items-center justify-start p-4 w-full bg-MineShaft rounded-br-3xl ">
-          <h2 className="font-Roboto text-3xl">
-            #{roomName}
-          </h2>
+          <h2 className="font-Roboto text-3xl">#{roomName}</h2>
         </section>
         <section
           className="h-full p-4 text-base w-full break-all overflow-y-scroll"
           id="chatContainer"
         >
-          {messages?.map((msg, i) => (
+          {messages?.map((msg:any, i) => (
             <section key={i} className={`flex flex-col w-full`}>
               <section
                 className={`flex flex-col p-2 m-2 text-sm max-w-[30rem] ${

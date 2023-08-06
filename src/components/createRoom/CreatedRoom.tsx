@@ -1,8 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useContext } from "react";
 import { SocketContext } from "../SocketContext/SocketContext";
 
-const CreateRoomForm = ({ isActive, onClose }) => {
-  const { socket } = useContext(SocketContext);
+interface ReactProp {
+  isActive:boolean,
+  onClose:()=>void
+}
+
+const CreateRoomForm = ({ isActive, onClose }:ReactProp) => {
+  const { socket }:any = useContext(SocketContext);
   const [roomName, setRoomName] = useState("");
   const [error, setError] = useState<boolean>()
 
