@@ -5,7 +5,7 @@ import CreateRoomForm from "../createRoom/CreatedRoom";
 
 const RoomList = ({ room }:any) => {
   const [rooms, setRooms] = useState<string[]>([]);
-  const socket:any = useContext(SocketContext);
+  const { socket}:any = useContext(SocketContext);
   const [currentRoom, setCurrentRoom] = useState<string | null>("");
 
   const [isPopupOpen, setPopupOpen] = useState(false);

@@ -11,7 +11,7 @@ interface ReactProp {
 const Chat = ({ roomName }: ReactProp) => {
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<object[]>([]);
-  const socket : any = useContext(SocketContext);
+  const { socket }: any = useContext(SocketContext);
 
   const validation = (data: string) => {
     return data.trim() == "";

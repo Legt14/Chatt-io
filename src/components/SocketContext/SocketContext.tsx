@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext } from "react";
-import { io, Socket } from "socket.io-client";
+import { io } from "socket.io-client";
 
-const socket: Socket = io(`${import.meta.env.VITE_CONNECTION}`);
+const socket:any = io(`${import.meta.env.VITE_CONNECTION}`);
 const SocketContext = createContext(socket);
 
 const SocketProvider = ({ children }:any) => {
   return (
     <>
-      <SocketContext.Provider value={ socket }>
+      <SocketContext.Provider value={ {socket} }>
         {children}
       </SocketContext.Provider>
     </>
