@@ -2,8 +2,8 @@
 import { createContext } from "react";
 import { io } from "socket.io-client";
 
-const socket: any = io(`https://chattio-backend.onrender.com`, {
-  withCredentials: true
+const socket: any = io(`${import.meta.env.VITE_CONNECTION}`, {
+  transports: ['websocket']
 });
 const SocketContext = createContext(socket);
 
