@@ -46,7 +46,7 @@ const CreateRoomForm = ({ isActive, onClose }:ReactProp) => {
     >
       <form
         onSubmit={handleFormSubmit}
-        className="bg-MineShaft w-80 h-56 p-5 rounded-xl flex flex-col items-center justify-center gap-24"
+        className="border border-LinkWater border-opacity-10 bg-MineShaft w-80 h-56 p-5 rounded-xl flex flex-col items-center justify-center gap-24"
       >
         <input
           type="text"
@@ -55,6 +55,7 @@ const CreateRoomForm = ({ isActive, onClose }:ReactProp) => {
           className={`p-3 w-full rounded-xl bg-LinkWater/10 focus:outline-none text-center ${error ? 'border border-PersianRed ' : ''}`}
           placeholder="Room Name"
           autoComplete="off"
+          autoFocus={true}
           onChange={handleInputChange}
         />
         <section className="flex items-center justify-between w-full [&>button]:w-32 [&>button]:h-12 [&>button]:rounded-xl">

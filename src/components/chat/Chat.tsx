@@ -59,7 +59,7 @@ const Chat = ({ roomName }: ReactProp) => {
   return (
     <>
       <main className="flex flex-col items-end justify-between h-screen w-full">
-        <section className="flex items-center justify-start p-4 w-full bg-MineShaft rounded-br-3xl ">
+        <section className="flex items-center justify-start p-6 w-full bg-MineShaft rounded-br-3xl ">
           <h2 className="font-Roboto text-3xl">#{roomName}</h2>
         </section>
         <section
@@ -100,6 +100,7 @@ const Chat = ({ roomName }: ReactProp) => {
             placeholder="Type something"
             autoComplete="off"
             className="p-3 w-full rounded-xl bg-LinkWater/10 focus:outline-none"
+            autoFocus={true}
             onChange={handleInputChange}
           />
           <button className="flex justify-center items-center w-9 h-9 rounded-xl bg-CuriousBlue transition transform delay-100 duration-300 hover:-rotate-90">
