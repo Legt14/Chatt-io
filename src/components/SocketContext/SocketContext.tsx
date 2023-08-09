@@ -2,7 +2,7 @@
 import { createContext } from "react";
 import { io } from "socket.io-client";
 
-const socket: any = io(`${import.meta.env.VITE_CONNECTION_2 }`, {
+const socket: any = io(`${import.meta.env.VITE_CONNECTION }`, {
   transports: ['websocket']
 });
 const SocketContext = createContext(socket);
