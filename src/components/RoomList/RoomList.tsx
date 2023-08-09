@@ -9,7 +9,7 @@ const RoomList = ({ room }: any) => {
   const [currentRoom, setCurrentRoom] = useState<string | null>("");
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [IsActive, setIsActive] = useState(false);
-  const [UserCounts, setUserCounts] = useState({});
+  const [UserCounts, setUserCounts] = useState<{ [key: string]: number }>({});
 
   useEffect(() => {
     socket.emit("getRooms"); // Enviar mensaje al servidor para obtener la lista de rooms
@@ -17,7 +17,7 @@ const RoomList = ({ room }: any) => {
     socket.on("roomList", (roomList: string[]) => {
       setRooms(roomList);
     });
-    socket.on("userCount", (data) => {
+    socket.on("userCount", (data: { room: string; count: number }) => {
       setUserCounts((prevCounts) => ({
         ...prevCounts,
         [data.room]: data.count,
@@ -31,7 +31,7 @@ const RoomList = ({ room }: any) => {
     };
   }, [socket]);
 
-  const leaveRoom = (room) => {
+  const leaveRoom = (room:string|null) => {
     socket.emit("leave", room);
     console.log(currentRoom);
   };
