@@ -12,7 +12,7 @@ function App() {
   };
   return (
     <>
-      <section className="min-h-full min-w-full bg-PrussianBlue text-LinkWater flex">
+      <section className="min-h-screen min-w-screen bg-PrussianBlue text-LinkWater flex">
         <SocketProvider>
           <RoomList room={handleRoomName} />
           <Chat roomName={roomName} />
