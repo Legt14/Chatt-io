@@ -56,6 +56,7 @@ const Chat = ({ roomName }: ReactProp) => {
       : scrollContainer;
   };
 
+
   return (
     <>
       <main className="flex flex-col items-end justify-between h-screen w-full">
@@ -71,8 +72,8 @@ const Chat = ({ roomName }: ReactProp) => {
               <section
                 className={`flex flex-col p-2 m-2 text-sm max-w-[30rem] ${
                   msg.from === "Me"
-                    ? "bg-CuriousBlue ml-auto rounded-t-2xl rounded-bl-2xl"
-                    : "bg-CuriousBlue/20 mr-auto rounded-t-2xl rounded-br-2xl"
+                  ? "bg-CuriousBlue ml-auto rounded-t-2xl rounded-bl-2xl"
+                  : "bg-CuriousBlue/20 mr-auto rounded-t-2xl rounded-br-2xl"
                 } `}
               >
                 <p

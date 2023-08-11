@@ -8,7 +8,7 @@ const RoomList = ({ room }: any) => {
   const { socket }: any = useContext(SocketContext);
   const [currentRoom, setCurrentRoom] = useState<string | null>("");
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [IsActive, setIsActive] = useState(false);
+  const [IsActive, setIsActive] = useState(true);
   const [UserCounts, setUserCounts] = useState<{ [key: string]: number }>({});
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const RoomList = ({ room }: any) => {
     socket.on("roomList", (roomList: string[]) => {
       setRooms(roomList);
     });
+
     socket.on("userCount", (data: { room: string; count: number }) => {
       setUserCounts((prevCounts) => ({
         ...prevCounts,
@@ -24,16 +25,26 @@ const RoomList = ({ room }: any) => {
       }));
     });
 
+    window.addEventListener("beforeunload", () => {
+      if (currentRoom) {
+        leaveRoom(currentRoom);
+      }
+    });
+
     // Importante: Limpiar el event listener al desmontar el componente
     return () => {
       socket.off("roomList");
       socket.off("userCount");
+      window.removeEventListener("beforeunload", () => {
+        if (currentRoom) {
+          leaveRoom(currentRoom);
+        }
+      });
     };
-  }, [socket]);
+  }, [socket, currentRoom]);
 
-  const leaveRoom = (room:string|null) => {
+  const leaveRoom = (room: string | null) => {
     socket.emit("leave", room);
-    console.log(currentRoom);
   };
 
   const joinRoom = (roomName: string) => {
@@ -101,7 +112,7 @@ const RoomList = ({ room }: any) => {
               >
                 <section className=" flex flex-col md:flex-row md:items-center max-sm:justify-center gap-4  font-Roboto p-2">
                   <span className="w-10 h-10  bg-HippieBlue rounded-xl flex items-center justify-center">
-                  {UserCounts[roomName] || 0}
+                    {UserCounts[roomName] || 0}
                   </span>
                   <p>{roomName}</p>
                 </section>
