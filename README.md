@@ -35,7 +35,7 @@ This project is a part of my personal portfolio and currently does not accept ex
 
 ## Contact
 
-If you have any questions or comments about Chattio, feel free to contact me via [email](legt1407@gmail.com) or visit my [GitHub profile](https://github.com/Legt14).
+If you have any questions or comments about Chattio, feel free to contact me via `legt1407@gmail.com` or visit my [GitHub profile](https://github.com/Legt14).
 
 Thank you for exploring Chattio and enjoy real-time conversations!
 
